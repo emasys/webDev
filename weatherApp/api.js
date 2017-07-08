@@ -27,59 +27,50 @@ function weather() {
 
             var condition = data.currently.icon;
 
-
-
-
-
             if(condition == "partly-cloudy-day"){
 
-                $('.site-wrapper').css("backgroundImage", "url(\"images/partly_cloudy.jpg\")");
+                $('.site-wrapper').css("backgroundImage", "url(\"https://raw.githubusercontent.com/emasys/webDev/master/weatherApp/images/partly_cloudy.jpg\")");
 
-//                document.getElementById("greetings").innerHTML =
-//                    "Oh yeah, seems like we have a weather for two.<br> It's "+s+" outside.";
-
-
-//                clear-day, , rain, snow, sleet, wind, fog, cloudy, partly-cloudy-day, or partly-cloudy-night
 
             }
             if(condition == "wind") {
 
-                $('.site-wrapper').css("backgroundImage", "url(\"images/wind.jpg\")");
+                $('.site-wrapper').css("backgroundImage", "url(\"https://raw.githubusercontent.com/emasys/webDev/master/weatherApp/images/wind.jpg\")");
             }
             if(condition == "partly-cloudy-night") {
 
-                $('.site-wrapper').css("backgroundImage", "url(\"images/partly-night.jpg\")");
+                $('.site-wrapper').css("backgroundImage", "url(\"https://raw.githubusercontent.com/emasys/webDev/master/weatherApp/images/partly-night.jpg\")");
             }
 
             if(condition == "fog") {
 
-                $('.site-wrapper').css("backgroundImage", "url(\"images/fog.jpg\")");
+                $('.site-wrapper').css("backgroundImage", "url(\"https://raw.githubusercontent.com/emasys/webDev/master/weatherApp/images/fog.jpg\")");
             }
 
             if(condition == "cloudy") {
 
-                $('.site-wrapper').css("backgroundImage", "url(\"images/cloudy.jpg\")");
+                $('.site-wrapper').css("backgroundImage", "url(\"https://raw.githubusercontent.com/emasys/webDev/master/weatherApp/images/cloudy.jpg\")");
             }
 
             if(condition == "rain") {
 
-                $('.site-wrapper').css("backgroundImage", "url(\"images/rain.jpg\")");
+                $('.site-wrapper').css("backgroundImage", "url(\"https://raw.githubusercontent.com/emasys/webDev/master/weatherApp/images/rain.jpg\")");
             }
             if(condition == "snow") {
 
-                $('.site-wrapper').css("backgroundImage", "url(\"images/snow.jpg\")");
+                $('.site-wrapper').css("backgroundImage", "url(\"https://raw.githubusercontent.com/emasys/webDev/master/weatherApp/images/sleet.jpeg\")");
             }
             if(condition == "sleet") {
 
-                $('.site-wrapper').css("backgroundImage", "url(\"images/sleet.jpg\")");
+                $('.site-wrapper').css("backgroundImage", "url(\"https://raw.githubusercontent.com/emasys/webDev/master/weatherApp/images/snow.jpg\")");
             }
             if(condition == "clear-day") {
 
-                $('.site-wrapper').css("backgroundImage", "url(\"images/clearDay.jpg\")");
+                $('.site-wrapper').css("backgroundImage", "url(\"https://raw.githubusercontent.com/emasys/webDev/master/weatherApp/images/clearDay.jpg\")");
             }
             if(condition == "clear-night") {
 
-                $('.site-wrapper').css("backgroundImage", "url(\"images/clear-night.jpg\")");
+                $('.site-wrapper').css("backgroundImage", "url(\"https://raw.githubusercontent.com/emasys/webDev/master/weatherApp/images/clear-night.png\")");
             }
 
 
@@ -88,13 +79,7 @@ function weather() {
         $.getJSON(url1 + latitude + "," + longitude + "&sensor=true", function(data) {
             $('#city').html(data.results[0].formatted_address);
 
-
-
-
         });
-
-
-
 
     }
 
@@ -112,16 +97,12 @@ $(document).ready(function(){
 
 
     $("#convFtoC").hide();
-   $("#convCtoF").click(function(){
-       var c = (5/9) * (f - 32);
-       document.getElementById("temp").innerHTML = Math.floor(c) + "°C";
-       $("#convCtoF").hide();
-       $("#convFtoC").show();
-   });
-
-
-
-
+    $("#convCtoF").click(function(){
+        var c = (5/9) * (f - 32);
+        document.getElementById("temp").innerHTML = Math.floor(c) + "°C";
+        $("#convCtoF").hide();
+        $("#convFtoC").show();
+    });
 
     $("#convFtoC").click(function() {
         document.getElementById("temp").innerHTML = f + "°F";
