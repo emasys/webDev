@@ -129,7 +129,7 @@ img{
 }
 
 .searchBar{
-    margin: 20px;
+    margin: 15px;
 }
 
 #borders{
@@ -156,6 +156,42 @@ h1{
     width: 100%;
     text-align: center;
     clear: both;
+}
+
+button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 4px 8px;
+    font-size: 11px;
+    /*font-family: "Bitter",serif;*/
+    line-height: 1.8;
+    appearance: none;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+button:focus {
+    outline: none
+}
+
+.searchBar button {
+    color: #fff;
+    /*text-shadow: -2px 2px #346392;*/
+    background-color: #444;
+    background-image: linear-gradient(top, #000000, #3c3f41);
+    box-shadow: inset 0 0 0 1px #ffffff;
+    border: none;
+    border-radius: 15px;
+}
+
+.searchBar button:hover,
+.searchBar button.hover {
+    box-shadow: inset 0 0 0 1px #ffffff,0 5px 15px #3c3f41;
+}
+
+.searchBar button:active,
+.searchBar button.active {
+    box-shadow: inset 0 0 0 1px #3c3f41,inset 0 5px 30px #000000;
 }
 
 

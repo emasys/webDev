@@ -6,6 +6,7 @@ var endPoint = "https://en.wikipedia.org/w/api.php?callback=?";
 
 $(document).ready(function() {
 
+
     $("#search").on("submit", function() {
         $("#display").empty();
         $.getJSON(endPoint, {
@@ -47,6 +48,12 @@ $(document).ready(function() {
 
 
         return false;
+    });
+
+    $("#random").on("click" ,function(){
+        console.log("redirecting...");
+        window.location.href = "https://en.wikipedia.org/wiki/Special:Random";
+
     });
 });
 
