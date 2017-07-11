@@ -1,12 +1,8 @@
 /**
 * Created by EMASYS ND on 7/8/2017.
 */
-
 var endPoint = "https://en.wikipedia.org/w/api.php?callback=?";
-
 $(document).ready(function() {
-
-
     $("#search").on("submit", function() {
         $("#display").empty();
         $.getJSON(endPoint, {
@@ -39,21 +35,16 @@ $(document).ready(function() {
                             $('#display').append(
                                     "<div class='lead display beautify-box'><h2>" + title + "</h2></p><p>" + body+ "</p></div>");
                         }
-
                     })
                 }catch(err){
                     $('#display').append("<div class='lead display text-center beautify-box'><p> Sorry, your query returned no results.</p></div>");
                 }
             });
-
-
         return false;
     });
-
     $("#random").on("click" ,function(){
         console.log("redirecting...");
         window.location.href = "https://en.wikipedia.org/wiki/Special:Random";
-
     });
 });
 
