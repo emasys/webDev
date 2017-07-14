@@ -6,73 +6,36 @@
  **/
 
 //Array of channels from fcc user stories
-var channels = ["ESL_SC2", "summit1g", "LIRIK", "YoDa",
-    "OgamingSC2", "cretetion", "freecodecamp", "storbeck",
-    "habathcx", "RobotCaleb", "noobs2ninjas", "DrDisRespectLIVE"];
-
+var channels = ["DreadzTV","ESL_SC2",
+    "OgamingSC2", "dreamhackcs", "freecodecamp",
+    "StarCraft", "Ninja", "EULCS1"];
 //Variable declaration
-var url, channelName, channelImage, channelUrl, channelLogo, streaming;
-
+var url, url1, channelName, showing, response, channelUrl, channelLogo, streaming, counter, content;
+//$(".content").html(content);
 $(document).ready(function(){
-
 //API interaction
-for(var counter = 0; counter < channels.length; counter++){
-    url = "https://wind-bow.glitch.me/twitch-api/streams/" + channels[counter] + "?callback=?";
-    $.getJSON(url, function(data) {
-        if(data.stream != null){
-            console.log(data.stream);
-            channelName = data.stream.channel.display_name;
-            channelImage = 5;
-            streaming = true;
-            channelUrl = data.stream.channel.url;
-            channelLogo = data.stream.channel.logo;
-        }else{
-            channelName = channels[i];
-            streaming = false;
-        }
-
-        //DOM
-
-    });
-}
-
-
-    $('.hover').on('click',function(){
-        $(this).toggleClass('flip');
-    });
-    $('.hover').hover(function(){
-        $(this).toggleClass('flip');
-    },function(){
-        $(this).removeClass('flip');
-    });
-});
-
-
-
-
-
-
-
-/*
-function getResult() {
-    try{
-        $.ajax({
-            type: "GET",
-            url: "https://wind-bow.glitch.me/twitch-api/streams/dreamhackcs",
-            headers: {"Client-ID": 'it87glkgmid08t8iwendio6th4nz8r'},
-            success: function (data) {
-                console.log(data.stream);
-
-                var channelName = data.stream.channel.display_name;
-                var channelImage = 5;
-                var channelUrl = data.stream.channel.url;
-                var channelLogo = data.stream.channel.logo;
-
+    for(counter = 0; counter < channels.length; counter++){
+        url1 = "https://wind-bow.glitch.me/twitch-api/channels/"+channels[counter]+"?callback=?";//to get offline channel details
+        url = "https://wind-bow.glitch.me/twitch-api/streams/"+channels[counter]+"?callback=?";//to get online channel details
+        $.getJSON(url, function(data) {
+            response = data.stream;
+            if (response != null) {
+                channelName = response.channel.display_name;
+                showing = response.channel.status;
+                streaming = "online";
+                channelUrl = response.channel.url;
+                channelLogo = response.channel.logo;
+                content = "<div class=\"card\">" +
+                    "<div class=\"row\">" +
+                    "<div class=\"col-3 \"><img src='" + channelLogo + "' class='iconize'></div>" +
+                    "<div class=\"col-9  cardText\">" +
+                    "<h5 class='title'><a href='" + channelUrl + "' target='_blank'>" + channelName + "</a></h5>" +
+                    "<p class=\"card-lines\">" + showing + "</p>" +
+                    "<p class=\"card-lines borders status\" >" + streaming + "</p>" +
+                    "</div></div></div>";
+                $(".content").append(content);
+                $(".status").removeClass('status');
             }
-
         });
-    }catch (err){
-        console.log("not working");
     }
-}
-*/
+});
