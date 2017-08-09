@@ -15,8 +15,8 @@ $('document').ready(function() {
         sq9 = $('#square9'),
         playValid = false,
         win = false,
-        clicked = new Audio('click.mp3'),
-        won = new Audio('victory.mp3');
+        clicked = new Audio('../sound/click.mp3'),
+        won = new Audio('../sound/victory.mp3');
 
     //handling UI/UX
     $('#reset-button').on('click', function() {
