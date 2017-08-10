@@ -51,7 +51,7 @@ function startTimer() {
         countDown(sessionLength, seconds);
         $('.glow').addClass('pulse');
     } else if (clicks == 1) {
-        btnReset();
+       btnReset();
         clicks -= 1;
         $('.glow').removeClass('pulse');
     }
@@ -64,10 +64,12 @@ function countDown(m,s) {
                 timeLeft = breakLength;
                 loop += 1;
                 $('#sessionName').text('On Break');
+                $('.glow').removeClass('pulse');
             } else {
                 timeLeft = sessionLength;
                 loop -= 1;
                 $('#sessionName').text('In Session');
+                $('.glow').addClass('pulse');
             }
             alarm.play();
             countDown(timeLeft,0);
@@ -102,12 +104,30 @@ $('document').ready(function(){
     $('#play').on('click', function(){
         $(this).hide();
         $('#pause').show();
-    })
+    }).on('mouseenter', function(){
+        $(this).css({"text-shadow": "0 0 0 black"}).addClass('fa-spin');
+    }).on('mouseleave', function(){
+        $(this).css({"text-shadow": "0 2px 2px black"}).removeClass('fa-spin')
+    });
     $('#pause').on('click', function(){
         $(this).hide();
         $('#play').show();
-    })
+    }).on('mouseenter', function(){
+        $(this).css({"text-shadow": "0 0 0 black"}).addClass('fa-spin');
+    }).on('mouseleave', function(){
+        $(this).css({"text-shadow": "0 2px 2px black"}).removeClass('fa-spin')
+    });
     $('#setting').on('click',function(){
         $('#settings-panel').slideToggle(100);
-    })
+    }).on('mouseenter', function(){
+        $(this).css({"text-shadow": "0 0 0 black"}).addClass('fa-spin');
+    }).on('mouseleave', function(){
+        $(this).css({"text-shadow": "0 2px 2px black"}).removeClass('fa-spin')
+    });
+    $('#reset').on('mouseenter', function(){
+        $(this).css({"text-shadow": "0 0 0 black"}).addClass('fa-spin');
+    }).on('mouseleave', function(){
+        $(this).css({"text-shadow": "0 2px 2px black"}).removeClass('fa-spin')
+    });
+
 });

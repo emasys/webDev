@@ -16,6 +16,9 @@ $('document').ready(function() {
         playValid = false,
         win = false,
         clicked = new Audio('../sound/click.mp3'),
+        error = new Audio('../sound/Error.mp3'),
+        lose = new Audio('../sound/Monster-laugh.mp3'),
+        draw = new Audio('../sound/draw.mp3'),
         won = new Audio('../sound/victory.mp3');
 
     //handling UI/UX
@@ -37,6 +40,7 @@ $('document').ready(function() {
         } else {
             $('.victory').effect('shake', 50).slideDown(200).css({"fontSize": "12px"}).html('Not Empty')
                 .delay(700).slideUp(200);
+            error.play();
         }
     });
 
@@ -66,7 +70,7 @@ $('document').ready(function() {
         } else {
             $('.victory').slideDown(200).css({"fontSize": "20px"}).html('You lose...')
                 .delay(1500).slideUp(200);
-            won.play();
+            lose.play();
         }
         clearBoard();
     }
@@ -75,7 +79,7 @@ $('document').ready(function() {
         if ( !($('.tile').hasClass('free')) ) {
             $('.victory').slideDown(200).css({"fontSize": "20px"}).html("Draw!")
                 .delay(1500).slideUp(100);
-            won.play();
+            draw.play();
             clearBoard();
         }
     }

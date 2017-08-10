@@ -1,33 +1,34 @@
 /**
  * Created by eMASYS ND on 7/31/2017.
  */
-$(document).ready(function(){
-    var buttons = document.getElementById('buttons');
-    var clear = document.getElementById('clear');
-    var answer = document.getElementById('results');
-    let expressions = document.getElementById('expressions');
 
+let answer = document.getElementById('results');
+let expressions = document.getElementById('expressions');
+$(document).ready(function(){
         $('#err').hide();
 
     $('#buttons').on('click', function(e) {
 
         if (e.target.nodeName === 'LI') {
-            var v = e.target.innerHTML;
-            console.log(expressions.innerHTML.length);
-            if (v === '=') {
+            let value = e.target.innerHTML;
+            if (value === '=') {
                 try {
-                    answer.innerHTML = eval(expressions.innerHTML);
+                    if(expressions.innerHTML !== ""){
+                        answer.innerHTML = eval(expressions.innerHTML);
+                    }
+
                 } catch(e) {
+                    $('#results').css({"fontSize":"26px","fontWeight":"Bolder"});
                     answer.innerHTML = "sign error";
                 }
-            } else if(v ==='AC'){
+            } else if(value ==='AC'){
                 expressions.innerHTML = "";
                 answer.innerHTML = "";
-                $('#results').css("fontSize","45px");
+                $('#results').css({"fontSize":"26px","fontWeight":"Bolder"});
                 $('#expressions').css("fontSize","28px");
                 $('.typed-cursor').css("fontSize","28px");
             }
-            else if(v==='C'){
+            else if(value ==='C'){
                 var c = expressions.innerHTML;
                 if(expressions.innerHTML.length < 14) {
                     expressions.innerHTML = c.slice(0,c.length-1);
@@ -47,7 +48,7 @@ $(document).ready(function(){
             else{
                 if(expressions.innerHTML.length <= 11) {
                     $('#err').hide();
-                    expressions.innerHTML += v;
+                    expressions.innerHTML += value;
                     $('#results').css("fontSize","40px");
                     $('#expressions').css("fontSize","28px");
                     $('.typed-cursor').css("fontSize","28px");
@@ -55,7 +56,7 @@ $(document).ready(function(){
                     $('#err').show();
                 }else{
                     $('#err').hide();
-                    expressions.innerHTML += v;
+                    expressions.innerHTML += value;
                     $('#results').css("fontSize","16px");
                     $('#expressions').css("fontSize","12px");
                     $('.typed-cursor').css("fontSize","12px");

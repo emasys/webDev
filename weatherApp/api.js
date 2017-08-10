@@ -1,7 +1,8 @@
 /**
  * Created by EMASYS ND on 7/6/2017.
  */
-var f, s;
+var f, s, t;
+
 function weather() {
 
     var location = document.getElementById("location");
@@ -18,6 +19,8 @@ function weather() {
         location.innerHTML = latitude + ', '+ longitude;
 
         $.getJSON(url + apiKey + "/" + latitude + "," + longitude + "?callback=?", function(data) {
+            t  = "this service is no longer supported, Although we know you're somewhere in " +data.timezone;
+
 
             f = Math.floor(data.currently.temperature);
             s = data.currently.summary;
@@ -77,8 +80,11 @@ function weather() {
         });
 
         $.getJSON(url1 + latitude + "," + longitude + "&sensor=true", function(data) {
-            $('#city').html(data.results[0].formatted_address);
-
+            if(data.length < 1){
+                $('#city').html(data.results[0].formatted_address);
+            }else{
+                $('#info').html("Real time weather forecast<br>for your current location");
+            }
         });
 
     }
