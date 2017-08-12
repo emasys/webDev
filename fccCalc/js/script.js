@@ -11,6 +11,7 @@ $(document).ready(function(){
 
         if (e.target.nodeName === 'LI') {
             let value = e.target.innerHTML;
+
             if (value === '=') {
                 try {
                     if(expressions.innerHTML !== ""){
